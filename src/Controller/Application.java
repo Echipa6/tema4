@@ -15,6 +15,7 @@ public class Application {
 			currentCommand = keyboard.next();
 			//System.out.println(currentCommand);
 			comamnderManager.executeCommand(currentCommand);
+			System.out.println("");
 		}
 		
 
