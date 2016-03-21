@@ -9,6 +9,7 @@ public class Application {
 		Scanner keyboard = new Scanner(System.in);
 		
 		CommandSolver comamnderManager= new CommandSolver();
+		//comentariu genereaza conflict
 		while(true)
 		{
 			System.out.println("Enter a new command");
