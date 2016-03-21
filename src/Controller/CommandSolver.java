@@ -6,6 +6,7 @@ import Model.ExitCommand;
 import Model.FavCommand;
 import Model.FindCommand;
 import Model.InfoCommand;
+import Model.ListCommand;
 import Model.PlayCommand;
 import Model.ReportCommand;
 
