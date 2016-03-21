@@ -10,6 +10,7 @@ public class Application {
 		
 		CommandSolver comamnderManager= new CommandSolver();
 		//comentariu genereaza conflict
+		// altceva
 		while(true)
 		{
 			System.out.println("Enter a new command");
