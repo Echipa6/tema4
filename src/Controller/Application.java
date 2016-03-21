@@ -7,11 +7,14 @@ public class Application {
 	public static void main(String[] args) {
 		String currentCommand;
 		Scanner keyboard = new Scanner(System.in);
+		
+		CommandSolver comamnderManager= new CommandSolver();
 		while(true)
 		{
 			System.out.println("Enter a new command");
 			currentCommand = keyboard.next();
-			System.out.println(currentCommand);
+			//System.out.println(currentCommand);
+			comamnderManager.executeCommand(currentCommand);
 		}
 		
 
