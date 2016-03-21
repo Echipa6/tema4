@@ -12,6 +12,7 @@ public class Application {
 		System.out.println("tralala");
 		while(true)
 		{
+			
 			System.out.println("Enter a new command");
 			currentCommand = keyboard.next();
 			//System.out.println(currentCommand);
