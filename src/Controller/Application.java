@@ -11,6 +11,7 @@ public class Application {
 		CommandSolver comamnderManager= new CommandSolver();
 		while(true)
 		{
+			System.out.println("tralala");
 			System.out.println("Enter a new command");
 			currentCommand = keyboard.next();
 			//System.out.println(currentCommand);
