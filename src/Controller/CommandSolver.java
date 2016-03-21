@@ -36,6 +36,11 @@ public class CommandSolver {
 		{
 			currentCommand.execute();
 		}
+		else
+		{
+			//exceptie
+			System.out.println("Unknown command");
+		}
 		
 	}
 }
