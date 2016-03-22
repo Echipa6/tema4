@@ -16,7 +16,7 @@ public class CommandSolver {
 	{
 		switch(stringCommand.toLowerCase())
 		{
-		case "cd": return new CdCommand();
+		case "cd": return CdCommand.getInstance();
 		case "exit": return new ExitCommand();
 		case "fav": return new FavCommand();
 		case "find": return new FindCommand();
