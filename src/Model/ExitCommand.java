@@ -14,7 +14,7 @@ public class ExitCommand implements Command {
 	@Override
 	public void execute() {
 		// TODO Auto-generated method stub
-		System.out.println("Comman exit execute...");
+		System.exit(0);
 	}
 	private ExitCommand()
 	{
