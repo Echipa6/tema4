@@ -7,7 +7,7 @@ public class ExitCommand implements Command {
 		// TODO Auto-generated method stub
 		System.out.println("Comman exit execute...");
 	}
-	public ExitCommand()
+	private ExitCommand()
 	{
 		
 	}

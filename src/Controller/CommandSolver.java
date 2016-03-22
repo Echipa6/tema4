@@ -17,13 +17,13 @@ public class CommandSolver {
 		switch(stringCommand.toLowerCase())
 		{
 		case "cd": return CdCommand.getInstance();
-		case "exit": return new ExitCommand();
-		case "fav": return new FavCommand();
-		case "find": return new FindCommand();
-		case "info": return new InfoCommand();
-		case "list": return new ListCommand();
-		case "play": return new PlayCommand();
-		case "report": return new ReportCommand();
+		case "exit": return ExitCommand.getInstance();
+		case "fav": return FavCommand.getInstance();
+		case "find": return FindCommand.getInstance();
+		case "info": return InfoCommand.getInstance();
+		case "list": return ListCommand.getInstance();
+		case "play": return PlayCommand.getInstance();
+		case "report": return ReportCommand.getInstance();
 		default: return null;
 		}
 	}

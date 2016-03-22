@@ -8,7 +8,7 @@ public class FindCommand implements Command {
 		System.out.println("Command find execute...");
 	}
 	
-	public FindCommand()
+	private FindCommand()
 	{
 		
 	}

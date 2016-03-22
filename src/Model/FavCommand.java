@@ -9,7 +9,7 @@ public class FavCommand implements Command{
 	
 	}
 	
-	public FavCommand()
+	private FavCommand()
 	{
 		
 	}

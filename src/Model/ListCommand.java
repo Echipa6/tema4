@@ -8,7 +8,7 @@ public class ListCommand implements Command {
 		System.out.println("Command list execute...");
 	}
 	
-	public ListCommand()
+	private ListCommand()
 	{
 		
 	}

@@ -8,7 +8,7 @@ public class PlayCommand implements Command {
 		System.out.println("Command play execute...");
 	}
 	
-	public PlayCommand()
+	private PlayCommand()
 	{
 		
 	}

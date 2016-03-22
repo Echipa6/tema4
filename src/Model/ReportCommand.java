@@ -8,7 +8,7 @@ public class ReportCommand implements Command {
 		System.out.println("Command report execute...");
 	}
 	
-	public ReportCommand()
+	private ReportCommand()
 	{
 		
 	}

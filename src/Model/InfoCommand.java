@@ -8,7 +8,7 @@ public class InfoCommand implements Command {
 		System.out.println("Command info execute...");
 	}
 	
-	public InfoCommand()
+	private InfoCommand()
 	{
 		
 	}
