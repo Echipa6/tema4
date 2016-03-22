@@ -12,7 +12,7 @@ public class FindCommand implements Command {
 	}
 	
 	@Override
-	public void execute() {
+	public void execute(String parametres) {
 		// TODO Auto-generated method stub
 		System.out.println("Command find execute...");
 	}

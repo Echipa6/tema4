@@ -1,5 +1,7 @@
 package Controller;
 
+import java.util.StringTokenizer;
+
 import Model.CdCommand;
 import Model.Command;
 import Model.ExitCommand;
@@ -11,9 +13,11 @@ import Model.PlayCommand;
 import Model.ReportCommand;
 
 public class CommandSolver {
-
+	private String actualPath=null;
+	
 	public Command getCommand(String stringCommand)
 	{
+		
 		switch(stringCommand.toLowerCase())
 		{
 		case "cd": return CdCommand.getInstance();
@@ -30,11 +34,24 @@ public class CommandSolver {
 	
 	public void executeCommand(String stringCommand)
 	{
-		Command currentCommand= getCommand(stringCommand);
+		StringTokenizer st = new StringTokenizer(stringCommand);
+	   
+		String command = null;
+	    String parametres = null;
+		
+		if(st.hasMoreTokens())
+			command=st.nextToken();
+		
+		
+		
+		
+		Command currentCommand= getCommand(command);
 		
 		if(currentCommand!=null)
 		{
-			currentCommand.execute();
+			if(st.hasMoreTokens())
+				parametres=st.nextToken();
+			currentCommand.execute(parametres);
 		}
 		else
 		{
@@ -42,5 +59,16 @@ public class CommandSolver {
 			System.out.println("Unknown command");
 		}
 		
+		
 	}
+	
+	public String getActualPath() {
+		
+			return CdCommand.getInstance().getCurrentPath();
+		
+		
+	}
+
+	
+
 }

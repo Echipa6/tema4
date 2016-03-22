@@ -11,7 +11,7 @@ public class ListCommand implements Command {
 	      return instance;
 	}
 	@Override
-	public void execute() {
+	public void execute(String parametres) {
 		// TODO Auto-generated method stub
 		System.out.println("Command list execute...");
 	}
