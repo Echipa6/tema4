@@ -19,10 +19,17 @@ public class ListCommand implements Command {
 	      return instance;
 	}
 	@Override
-	public void execute(String parametres) {
-		
+	public void execute(String parameters) {
 		System.out.println("Command list execute...");
-		Path dir =Paths.get("F:\\muzica andrei\\[2001] First Love 1");
+		Path dir;
+		if(parameters!=null)
+		{
+			 dir=Paths.get(parameters);
+		}
+		else
+		{
+			dir =Paths.get(CdCommand.getInstance().getCurrentPath());
+		}
 		try (DirectoryStream<Path> stream = Files.newDirectoryStream(dir)) {
 			
 			for (Path file: stream) {
