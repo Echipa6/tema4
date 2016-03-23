@@ -34,7 +34,7 @@ public class ListCommand implements Command {
 			
 			for (Path file: stream) {
 				//System.out.println(file.getFileName());
-				if( Pattern.matches("[ ._a-zA-Z0-9]+.wav",file.getFileName().toString()) || Pattern.matches("[ ._a-zA-Z0-9]+.mp3", file.getFileName().toString()) || Pattern.matches("[ ._a-zA-Z0-9]+.flac",file.getFileName().toString()) ){
+				if( Pattern.matches("(.)+.wav",file.getFileName().toString()) || Pattern.matches("(.)+.mp3", file.getFileName().toString()) || Pattern.matches("(.)+.flac",file.getFileName().toString()) ){
 						 System.out.println(file.getFileName());
 				}
 			}

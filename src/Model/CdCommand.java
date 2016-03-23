@@ -76,7 +76,7 @@ public class CdCommand implements Command {
 				}
 				else
 				{
-					if(Pattern.matches("[a-zA-Z]+(.)*", parametres))
+					if(Pattern.matches("[-!@1-9a-zA-Z]+(.)*", parametres))
 					{
 						
 						String newPath;

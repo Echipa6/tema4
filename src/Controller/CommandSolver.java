@@ -34,24 +34,25 @@ public class CommandSolver {
 	
 	public void executeCommand(String stringCommand)
 	{
-		StringTokenizer st = new StringTokenizer(stringCommand);
-	   
+		String[] result = stringCommand.split(" ", 2);
+		
+		
 		String command = null;
-	    String parametres = null;
+	    String parameteres = null;
 		
-		if(st.hasMoreTokens())
-			command=st.nextToken();
+	    if(result!=null)
+	    	command=result[0];
+	    if(result.length==2)
+	    parameteres=result[1];
 		
 		
-		
-		
+	  
 		Command currentCommand= getCommand(command);
 		
 		if(currentCommand!=null)
 		{
-			if(st.hasMoreTokens())
-				parametres=st.nextToken();
-			currentCommand.execute(parametres);
+			
+			currentCommand.execute(parameteres);
 		}
 		else
 		{
