@@ -7,9 +7,9 @@ import java.util.regex.Pattern;
 
 public class PlayCommand implements Command {
 	
-	private static Command instance= null;
+	private static PlayCommand instance= null;
 	
-	public static Command getInstance(){
+	public static PlayCommand getInstance(){
 		if(instance == null) {
 	         instance = new PlayCommand();
 	      }

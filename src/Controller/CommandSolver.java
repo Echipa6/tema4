@@ -13,7 +13,6 @@ import Model.PlayCommand;
 import Model.ReportCommand;
 
 public class CommandSolver {
-	private String actualPath=null;
 	
 	public Command getCommand(String stringCommand)
 	{
@@ -63,13 +62,4 @@ public class CommandSolver {
 		
 	}
 	
-	public String getActualPath() {
-		
-			return CdCommand.getInstance().getCurrentPath();
-		
-		
-	}
-
-	
-
 }

@@ -30,11 +30,12 @@ public class CdCommand implements Command {
 		{
 			Path currentRelativePath = Paths.get("");
 			String s = currentRelativePath.toAbsolutePath().toString();
+			System.out.println("path is:"+this.getCurrentPath());
 			this.setCurrentPath(s);
 		}
 		else
 		{
-			//System.out.println("path is:"+this.getCurrentPath());
+			
 			if(parametres.equals(new String("..")))
 			{
 				

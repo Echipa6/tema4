@@ -10,9 +10,9 @@ import java.util.regex.Pattern;
 
 public class ListCommand implements Command {
 	
-	private static Command instance= null;
+	private static ListCommand instance= null;
 	
-	public static Command getInstance(){
+	public static ListCommand getInstance(){
 		if(instance == null) {
 	         instance = new ListCommand();
 	      }

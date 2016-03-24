@@ -2,9 +2,9 @@ package Model;
 
 public class FavCommand implements Command{
 
-	private static Command instance= null;
+	private static FavCommand instance= null;
 	
-	public static Command getInstance(){
+	public static FavCommand getInstance(){
 		if(instance == null) {
 	         instance = new FavCommand();
 	      }
