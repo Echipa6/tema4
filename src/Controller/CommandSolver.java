@@ -1,6 +1,10 @@
 package Controller;
 
-import java.util.StringTokenizer;
+import java.beans.XMLDecoder;
+import java.io.BufferedInputStream;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.util.List;
 
 import Model.CdCommand;
 import Model.Command;
@@ -11,8 +15,25 @@ import Model.InfoCommand;
 import Model.ListCommand;
 import Model.PlayCommand;
 import Model.ReportCommand;
+import Model.Song;
 
 public class CommandSolver {
+	
+	private static final String FILENAME = "FavoriteSongs.xml";
+	
+	CommandSolver()
+	{
+		try{
+			XMLDecoder decoder =
+					new XMLDecoder(new BufferedInputStream(
+							new FileInputStream(FILENAME)));
+				FavCommand.getInstance().favoriteSong = (List<Song>)decoder.readObject();
+				decoder.close();
+		}catch(FileNotFoundException e)
+		{
+			System.out.println("Exception");
+		}
+	}
 	
 	public Command getCommand(String stringCommand)
 	{
@@ -45,14 +66,10 @@ public class CommandSolver {
 	    parameteres=result[1];
 		
 		
-	  
 		Command currentCommand= getCommand(command);
 		
 		if(currentCommand!=null)
-		{
-			
 			currentCommand.execute(parameteres);
-		}
 		else
 		{
 			//exceptie

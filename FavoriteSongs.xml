@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="1.8.0_73" class="java.beans.XMLDecoder">
+ <object class="java.util.ArrayList">
+  <void method="add">
+   <object class="Model.Song">
+    <void property="album">
+     <string>First Love</string>
+    </void>
+    <void property="artist">
+     <string>Yiruma</string>
+    </void>
+    <void property="genre">
+     <string>New Age</string>
+    </void>
+    <void property="path">
+     <string>F:\muzica andrei\[2001] First Love 1\11. Till I Find You.mp3</string>
+    </void>
+    <void property="title">
+     <string>Till I Find You</string>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="Model.Song">
+    <void property="album">
+     <string>Rise (Deluxe Edition)</string>
+    </void>
+    <void property="artist">
+     <string>Skillet</string>
+    </void>
+    <void property="composer">
+     <string></string>
+    </void>
+    <void property="genre">
+     <string>Alternative</string>
+    </void>
+    <void property="path">
+     <string>F:\muzica andrei\[2001] First Love 1\08. Skillet - Salvation.flac</string>
+    </void>
+    <void property="title">
+     <string>Salvation</string>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="Model.Song">
+    <void property="album">
+     <string>First Love</string>
+    </void>
+    <void property="artist">
+     <string>Yiruma</string>
+    </void>
+    <void property="genre">
+     <string>New Age</string>
+    </void>
+    <void property="path">
+     <string>F:\muzica andrei\[2001] First Love 1\01. I.mp3</string>
+    </void>
+    <void property="title">
+     <string>I</string>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="Model.Song">
+    <void property="album">
+     <string>First Love</string>
+    </void>
+    <void property="artist">
+     <string>Yiruma</string>
+    </void>
+    <void property="genre">
+     <string>New Age</string>
+    </void>
+    <void property="path">
+     <string>F:\muzica andrei\[2001] First Love 1\12. If I Could See You Again.mp3</string>
+    </void>
+    <void property="title">
+     <string>If I Could See You Again</string>
+    </void>
+   </object>
+  </void>
+ </object>
+</java>

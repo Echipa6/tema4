@@ -1,7 +1,10 @@
 package Model;
 
-public class Song {
+
+
+public class Song  {
 	
+
 	private String path;
 	private String title;
 	private String artist;
@@ -9,7 +12,7 @@ public class Song {
 	private String genre;
 	private String album;
 	
-	Song()
+	public Song()
 	{
 		setPath(null);
 		setTitle(null);
@@ -31,13 +34,19 @@ public class Song {
 	void afisare()
 	{
 		System.out.println("Afisare din song");
-		System.out.println(this.album);
-		System.out.println(this.artist);
-		System.out.println(this.composer);
-		System.out.println(this.genre);
 		System.out.println(this.path);
 		System.out.println(this.title);
+		System.out.println(this.artist);
+		System.out.println(this.album);
+		System.out.println(this.composer);
+		System.out.println(this.genre);
+
 	}
+	
+	@Override
+	  public String toString() {
+	    return String.format("[Song: path='%s', title=%s, artist=%s, album=%s, composer=%s, genre=%s]", path, title, artist,album,composer,genre);
+	  }
 
 	public String getPath() {
 		return path;

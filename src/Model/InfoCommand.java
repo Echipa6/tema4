@@ -53,7 +53,7 @@ public class InfoCommand implements Command {
 	public void execute(String parameters) 
 	{
 		// TODO Auto-generated method stub
-		System.out.println("Command info execute...");
+		//System.out.println("Command info execute...");
 		String pathToAudioFile=CdCommand.getInstance().getCurrentPath()+"\\"+parameters;
 		
 		if(Pattern.matches("(.)+.flac", parameters) )
@@ -65,8 +65,6 @@ public class InfoCommand implements Command {
 		else
 			System.out.println("Your choise isn't audio file ");
 		
-		Song melodie= new Song(this);
-		melodie.afisare();
 	
 	}
 	
