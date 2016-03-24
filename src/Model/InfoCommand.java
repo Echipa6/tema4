@@ -53,7 +53,7 @@ public class InfoCommand implements Command {
 	public void execute(String parameters) 
 	{
 		// TODO Auto-generated method stub
-		System.out.println("Command info execute...");
+		//System.out.println("Command info execute...");
 		
 		String pathToAudioFile=null;
 		
@@ -75,8 +75,8 @@ public class InfoCommand implements Command {
 		else
 			System.out.println("Your choise isn't audio file ");
 		
-		Song melodie= new Song(this);
-		melodie.afisare();
+		//Song melodie= new Song(this);
+		//melodie.afisare();
 	
 	}
 	

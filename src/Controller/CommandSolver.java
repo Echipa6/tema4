@@ -52,6 +52,8 @@ public class CommandSolver {
 		{
 			
 			currentCommand.execute(parameteres);
+			
+			System.out.println(CdCommand.getInstance().getCurrentPath());
 		}
 		else
 		{

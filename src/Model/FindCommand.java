@@ -1,19 +1,17 @@
 package Model;
 
-import java.awt.PrintJob;
-import java.io.IOException;
-import java.nio.file.DirectoryIteratorException;
-import java.nio.file.DirectoryStream;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.regex.Pattern;
 
-import thredds.filesystem.ControllerOS7.PrintFiles;
+import java.io.File;
+import java.util.List;
+
+import org.apache.commons.io.FileUtils;
+
 
 public class FindCommand implements Command {
 
 	private static FindCommand instance= null;
+	
+	private List<String> foundAudioFiles;
 	
 	public static FindCommand getInstance(){
 		if(instance == null) {
@@ -24,56 +22,29 @@ public class FindCommand implements Command {
 	
 	@Override
 	public void execute(String parametres) {
-		// TODO Auto-generated method stub
+		
 		System.out.println("Command find execute...");
-		
-		
-		try {
-			Files.walk(Paths.get(CdCommand.getInstance().getCurrentPath().toString())).forEach(filePath -> {
-			    if (Files.isReadable(filePath)) {
-			    	if( Pattern.matches("(.)+.wav",filePath.toString()) || Pattern.matches("(.)+.mp3", filePath.toString())|| Pattern.matches("(.)+.flac",filePath.toString()))    
-			    	{
-			    		System.out.println(filePath);
-			    	}
-			    }
-			});
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			System.err.println(e);
-		}
-		/*
-		String revertPath=CdCommand.getInstance().getCurrentPath().toString();
-		
-		Path dir=Paths.get(CdCommand.getInstance().getCurrentPath().toString());
-		if(parametres==null)
-		{
-			 System.out.println("give a search key");
-		}
-		else
-		{
-			
-			
-			try (DirectoryStream<Path> stream = Files.newDirectoryStream(dir)) {
+		foundAudioFiles=null;
+		InfoCommand info= InfoCommand.getInstance();
 				
-				for (Path file: stream) {
-					//System.out.println(file.getFileName());
-					if( Pattern.matches("(.)+.wav",file.getFileName().toString()) || Pattern.matches("(.)+.mp3", file.getFileName().toString()) || Pattern.matches("(.)+.flac",file.getFileName().toString()) ){
-							 System.out.println(file.getFileName());
-					}
-				}
-				
-			   
-			} catch (IOException | DirectoryIteratorException x) {
-			    // IOException can never be thrown by the iteration.
-			    // In this snippet, it can only be thrown by newDirectoryStream.
-			    System.err.println(x);
-			}
-		}
-		*/
-	
-		
+		List<File> files =
+                (List<File>) FileUtils.listFiles(FileUtils.getFile(CdCommand.getInstance().getCurrentPath().toString()), new String[] {"mp3","flac","wav"},true);
+		for(File file:files){
+			info.execute(file.toString());
+    		if(parametres.equals(InfoCommand.getInstance().getArtist()) )
+    		{
+    			foundAudioFiles.add(file.toString());
+    			//System.out.println(file);
+    		}
+    	}
 	}
 	
+	public List<String> getFoundAudioFiles() {
+		return foundAudioFiles;
+	}
+
+	
+
 	private FindCommand()
 	{
 		
