@@ -75,8 +75,6 @@ public class InfoCommand implements Command {
 		else
 			System.out.println("Your choise isn't audio file ");
 		
-		//Song melodie= new Song(this);
-		//melodie.afisare();
 	
 	}
 	
