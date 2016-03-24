@@ -27,10 +27,14 @@ public class FindCommand implements Command {
 		// TODO Auto-generated method stub
 		System.out.println("Command find execute...");
 		
+		
 		try {
 			Files.walk(Paths.get(CdCommand.getInstance().getCurrentPath().toString())).forEach(filePath -> {
 			    if (Files.isReadable(filePath)) {
-			        System.out.println(filePath);
+			    	if( Pattern.matches("(.)+.wav",filePath.toString()) || Pattern.matches("(.)+.mp3", filePath.toString())|| Pattern.matches("(.)+.flac",filePath.toString()))    
+			    	{
+			    		System.out.println(filePath);
+			    	}
 			    }
 			});
 		} catch (IOException e) {

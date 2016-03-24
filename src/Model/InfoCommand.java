@@ -54,8 +54,18 @@ public class InfoCommand implements Command {
 	{
 		// TODO Auto-generated method stub
 		System.out.println("Command info execute...");
-		String pathToAudioFile=CdCommand.getInstance().getCurrentPath()+"\\"+parameters;
 		
+		String pathToAudioFile=null;
+		
+		if(Pattern.matches("[A-Z]:(.)*", parameters))
+		{
+			pathToAudioFile=parameters;
+			
+		}
+		else
+		{
+			pathToAudioFile=CdCommand.getInstance().getCurrentPath()+"\\"+parameters;
+		}
 		if(Pattern.matches("(.)+.flac", parameters) )
 			parseMetadataFlac(pathToAudioFile);
 		
