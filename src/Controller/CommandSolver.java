@@ -68,8 +68,11 @@ public class CommandSolver {
 		
 		Command currentCommand= getCommand(command);
 		
-		if(currentCommand!=null)
+		if(currentCommand!=null){
 			currentCommand.execute(parameteres);
+			
+			System.out.println(CdCommand.getInstance().getCurrentPath());
+		}
 		else
 		{
 			//exceptie

@@ -15,19 +15,20 @@ public class Application {
 		while(true)
 		{
 			
-			System.out.println("");
 			currentCommand = keyboard.nextLine();
 			//System.out.println(currentCommand);
 			
-			try{
-				
-				comamnderManager.executeCommand(currentCommand);
-				//System.out.println(comamnderManager.getActualPath());
-			}
-			catch(NullPointerException e)
-			{
-				System.out.println("Command is empty");
-			}
+			comamnderManager.executeCommand(currentCommand);
+			
+//			try{
+//				
+//				
+//				//System.out.println(comamnderManager.getActualPath());
+//			}
+//			catch(NullPointerException e)
+//			{
+//				System.out.println("Command is empty. Exception");
+//			}
 			
 		}
 		

@@ -54,8 +54,18 @@ public class InfoCommand implements Command {
 	{
 		// TODO Auto-generated method stub
 		//System.out.println("Command info execute...");
-		String pathToAudioFile=CdCommand.getInstance().getCurrentPath()+"\\"+parameters;
 		
+		String pathToAudioFile=null;
+		
+		if(Pattern.matches("[A-Z]:(.)*", parameters))
+		{
+			pathToAudioFile=parameters;
+			
+		}
+		else
+		{
+			pathToAudioFile=CdCommand.getInstance().getCurrentPath()+"\\"+parameters;
+		}
 		if(Pattern.matches("(.)+.flac", parameters) )
 			parseMetadataFlac(pathToAudioFile);
 		
@@ -93,12 +103,6 @@ public class InfoCommand implements Command {
 
 			//pathToAudioFile=pathToAudioFile.replace('\\','/');
 		try{
-			System.out.println("Title= "+tag.getFirst(FieldKey.TITLE));
-			System.out.println("Artist= "+tag.getFirst(FieldKey.ARTIST));
-			System.out.println("Comoser= "+tag.getFirst(FieldKey.COMPOSER));
-			System.out.println("Genre= "+tag.getFirst(FieldKey.GENRE));
-			System.out.println("Album= "+tag.getFirst(FieldKey.ALBUM));
-			//System.out.println(tag.getFirst(FieldKey.TRACK));
 			
 			this.setTitle(tag.getFirst(FieldKey.TITLE));
 			this.setAlbum(tag.getFirst(FieldKey.ALBUM));
