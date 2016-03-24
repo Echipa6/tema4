@@ -7,12 +7,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.regex.Pattern;
 
-import org.apache.tika.exception.TikaException;
-import org.apache.tika.metadata.Metadata;
-import org.apache.tika.parser.ParseContext;
-import org.apache.tika.parser.Parser;
-import org.apache.tika.parser.mp3.Mp3Parser;
-import org.gagravarr.flac.FlacFile;
+import javax.swing.text.html.parser.Parser;
+
 import org.gagravarr.tika.FlacParser;
 import org.xml.sax.ContentHandler;
 import org.xml.sax.SAXException;
@@ -46,7 +42,7 @@ public class InfoCommand implements Command {
 						InputStream input=null;
 							if(Pattern.matches("(.)+.mp3", parameteres))
 							{	
-								parser = new Mp3Parser();	
+								//parser = new Mp3Parser();	
 								input=new FileInputStream(new File(pathToAudioFile));
 							}
 							if(Pattern.matches("(.)+.flac", parameteres))
