@@ -22,7 +22,7 @@ public class Application {
 			try{
 				
 				comamnderManager.executeCommand(currentCommand);
-				System.out.println(comamnderManager.getActualPath());
+				//System.out.println(comamnderManager.getActualPath());
 			}
 			catch(NullPointerException e)
 			{

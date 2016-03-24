@@ -2,9 +2,9 @@ package Model;
 
 public class ReportCommand implements Command {
 
-	private static Command instance= null;
+	private static ReportCommand instance= null;
 	
-	public static Command getInstance(){
+	public static ReportCommand getInstance(){
 		if(instance == null) {
 	         instance = new ReportCommand();
 	      }

@@ -13,9 +13,9 @@ import thredds.filesystem.ControllerOS7.PrintFiles;
 
 public class FindCommand implements Command {
 
-	private static Command instance= null;
+	private static FindCommand instance= null;
 	
-	public static Command getInstance(){
+	public static FindCommand getInstance(){
 		if(instance == null) {
 	         instance = new FindCommand();
 	      }
