@@ -12,8 +12,17 @@ import Model.PlayCommand;
 import Model.ReportCommand;
 import Model.Song;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class CommandView.
+ */
 public class CommandView {
 	
+	/**
+	 * Write result.
+	 *	display on console the resulted of the executed command;
+	 * @param command the command
+	 */
 	public void writeResult(CdCommand command)
 	{
 		switch(command.getExecutionType())
@@ -28,6 +37,11 @@ public class CommandView {
 		}
 	}
 	
+	/**
+	 * Write result.
+	 *
+	 * @param command the command
+	 */
 	public void writeResult(FavCommand command)
 	{
 		switch(command.getExecutionType())
@@ -40,11 +54,21 @@ public class CommandView {
 		}
 	}
 	
+	/**
+	 * Write result.
+	 *
+	 * @param command the command
+	 */
 	public void writeResult(FindCommand command)
 	{
 		
 	}
 	
+	/**
+	 * Write result.
+	 *
+	 * @param command the command
+	 */
 	public void writeResult(InfoCommand command)
 	{
 		switch(command.getExecutionType()){
@@ -61,20 +85,41 @@ public class CommandView {
 		
 	}
 	
+	/**
+	 * Write result.
+	 *
+	 * @param command the command
+	 */
 	public void writeResult(ListCommand command)
 	{
 		
 	}
 	
+	/**
+	 * Write result.
+	 *
+	 * @param command the command
+	 */
 	public void writeResult(PlayCommand command)
 	{
 		
 	}
 	
+	/**
+	 * Write result.
+	 *
+	 * @param command the command
+	 */
 	public void writeResult(ReportCommand command)
 	{
 		
 	}
+	
+	/**
+	 * Write result.
+	 *
+	 * @param currentCommand the current command
+	 */
 	public void writeResult(Command currentCommand) {
 		
 		if(currentCommand instanceof CdCommand)

@@ -70,6 +70,9 @@ public class CdCommand implements Command {
 	
 	}
 	
+	/**
+	 * Go back path.
+	 */
 	private void goBackPath()
 	{
 		String newPath="";
@@ -87,6 +90,11 @@ public class CdCommand implements Command {
 	    	this.setExecutionType("root");
 	}
 	
+	/**
+	 * Sets the absolute path.
+	 *
+	 * @param parameters the new absolute path
+	 */
 	private void setAbsolutePath(String parameters)
 	{
 		File file=new File(parameters);
@@ -100,6 +108,11 @@ public class CdCommand implements Command {
 			this.setExecutionType("invalid");
 	}
 	
+	/**
+	 * Sets the relative path.
+	 *
+	 * @param parameters the new relative path
+	 */
 	private void setRelativePath(String parameters)
 	{
 		String newPath;
@@ -143,9 +156,20 @@ public class CdCommand implements Command {
 		this.currentPath = currentPath;
 	}
 	
+	/**
+	 * Gets the execution type.
+	 *
+	 * @return the execution type
+	 */
 	public String getExecutionType() {
 		return executionType;
 	}
+	
+	/**
+	 * Sets the execution type.
+	 *
+	 * @param executionType the new execution type
+	 */
 	public void setExecutionType(String executionType) {
 		this.executionType = executionType;
 	}

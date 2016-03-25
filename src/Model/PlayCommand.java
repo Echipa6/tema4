@@ -5,10 +5,20 @@ import java.io.File;
 import java.io.IOException;
 import java.util.regex.Pattern;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class PlayCommand.
+ */
 public class PlayCommand implements Command {
 	
+	/** The instance. */
 	private static PlayCommand instance= null;
 	
+	/**
+	 * Gets the single instance of PlayCommand.
+	 *
+	 * @return single instance of PlayCommand
+	 */
 	public static PlayCommand getInstance(){
 		if(instance == null) {
 	         instance = new PlayCommand();
@@ -16,6 +26,11 @@ public class PlayCommand implements Command {
 	      return instance;
 	}
 	
+	/* (non-Javadoc)
+	 * this method establishes connection between our application and an audio player installed on desktop by opening audio file
+	 * and you can play only by giving relative path to the current directory
+	 * @see Model.Command#execute(java.lang.String)
+	 */
 	@Override
 	public void execute(String parameteres) {
 		// TODO Auto-generated method stub
@@ -55,6 +70,9 @@ public class PlayCommand implements Command {
 	
 	}
 	
+	/**
+	 * Instantiates a new play command.
+	 */
 	private PlayCommand()
 	{
 		

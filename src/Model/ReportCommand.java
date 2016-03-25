@@ -22,10 +22,20 @@ import java.util.Map;
 import java.util.List;
 
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ReportCommand.
+ */
 public class ReportCommand implements Command {
 
+	/** The instance. */
 	private static ReportCommand instance= null;
 	
+	/**
+	 * Gets the single instance of ReportCommand.
+	 *
+	 * @return single instance of ReportCommand
+	 */
 	public static ReportCommand getInstance(){
 		if(instance == null) {
 	         instance = new ReportCommand();
@@ -33,6 +43,11 @@ public class ReportCommand implements Command {
 	      return instance;
 	}
 	
+	/* (non-Javadoc)
+	 * 
+	 * create report in format HTML or PDF depends on what parameter that gets, and in report we'll see the list of paths to the favorits songs
+	 * @see Model.Command#execute(java.lang.String)
+	 */
 	@Override
 	public void execute(String parametres) {
 		// TODO Auto-generated method stub
@@ -119,6 +134,9 @@ public class ReportCommand implements Command {
 
 	
 	
+	/**
+	 * Instantiates a new report command.
+	 */
 	private ReportCommand()
 	{
 		

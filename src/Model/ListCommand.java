@@ -8,16 +8,32 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.regex.Pattern;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ListCommand the command are meant to list all audio files from current dir.
+ */
 public class ListCommand implements Command {
 	
+	/** The instance. */
 	private static ListCommand instance= null;
 	
+	/**
+	 * Gets the single instance of ListCommand.
+	 *
+	 * @return single instance of ListCommand
+	 */
 	public static ListCommand getInstance(){
 		if(instance == null) {
 	         instance = new ListCommand();
 	      }
 	      return instance;
 	}
+	
+	/* (non-Javadoc)
+	 * 
+	 * this method opens the current folder and parse all files, and select only audio files with extensions, like mp3, flac and wav;
+	 * @see Model.Command#execute(java.lang.String)
+	 */
 	@Override
 	public void execute(String parameters) {
 		System.out.println("Command list execute...");
@@ -47,6 +63,9 @@ public class ListCommand implements Command {
 		}
 	}
 	
+	/**
+	 * Instantiates a new list command.
+	 */
 	private ListCommand()
 	{
 		
