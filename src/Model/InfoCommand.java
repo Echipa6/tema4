@@ -14,7 +14,6 @@ import org.apache.tika.parser.Parser;
 import org.apache.tika.parser.mp3.Mp3Parser;
 import org.jaudiotagger.audio.AudioFile;
 import org.jaudiotagger.audio.AudioFileIO;
-import org.jaudiotagger.audio.AudioHeader;
 import org.jaudiotagger.audio.exceptions.CannotReadException;
 import org.jaudiotagger.audio.exceptions.InvalidAudioFrameException;
 import org.jaudiotagger.audio.exceptions.ReadOnlyFileException;
@@ -30,6 +29,8 @@ import org.xml.sax.helpers.DefaultHandler;
 public class InfoCommand implements Command {
 	
 	private static InfoCommand instance= null;
+	
+	private String executionType="ok";
 	
 	private String path;
 	private String title;
@@ -52,30 +53,28 @@ public class InfoCommand implements Command {
 	@Override
 	public void execute(String parameters) 
 	{
-		// TODO Auto-generated method stub
-		//System.out.println("Command info execute...");
 		
 		String pathToAudioFile=null;
 		
 		if(Pattern.matches("[A-Z]:(.)*", parameters))
 		{
-			pathToAudioFile=parameters;
-			
+			//Absolute path
+			pathToAudioFile=parameters;	
 		}
 		else
 		{
+			//Relative path
 			pathToAudioFile=CdCommand.getInstance().getCurrentPath()+"\\"+parameters;
 		}
+		
 		if(Pattern.matches("(.)+.flac", parameters) )
 			parseMetadataFlac(pathToAudioFile);
 		
-		else if(Pattern.matches("(.)+.mp3", parameters)||Pattern.matches("(.)+.wav", parameters))
+		else if(Pattern.matches("(.)+.mp3", parameters))
 			parseMetadataMp3(pathToAudioFile, parameters);
 		
 		else
-			System.out.println("Your choise isn't audio file ");
-		
-	
+			setExecutionType("fail");
 	}
 	
 	void parseMetadataFlac(String pathToAudioFile)
@@ -84,24 +83,24 @@ public class InfoCommand implements Command {
 		try {
 			f = AudioFileIO.read(new File(pathToAudioFile));
 		} catch (CannotReadException e) {
-			 System.err.println(e);
-			//e.printStackTrace();
+			 System.err.println("ParseMedataFlac CannotReadException"+e);
+			 setExecutionType("Exception");
 		} catch (IOException e) {
-			System.err.println(e);
-			//e.printStackTrace();
+			System.err.println("ParseMedataFlac IOException"+e);
+			setExecutionType("Exception");
 		} catch (TagException e) {
-			System.err.println(e);
-			//e.printStackTrace();
+			System.err.println("ParseMedataFlac TagException"+e);
+			setExecutionType("Exception");
 		} catch (ReadOnlyFileException e) {
-			System.err.println(e);
-			//e.printStackTrace();
+			System.err.println("ParseMedataFlac ReadOnlyException"+e);
+			setExecutionType("Exception");
 		} catch (InvalidAudioFrameException e) {
-			System.err.println(e);	
-			//e.printStackTrace();
+			System.err.println("ParseMedataFlac InvalidAudioFrameException"+e);	
+			setExecutionType("Exception");
 		}
+		
 		Tag tag = f.getTag();
 
-			//pathToAudioFile=pathToAudioFile.replace('\\','/');
 		try{
 			
 			this.setTitle(tag.getFirst(FieldKey.TITLE));
@@ -110,54 +109,55 @@ public class InfoCommand implements Command {
 			this.setComposer(tag.getFirst(FieldKey.COMPOSER));
 			this.setGenre(tag.getFirst(FieldKey.GENRE));
 			this.setPath(pathToAudioFile);
+			setExecutionType("ok");
 			
-			
-		} catch(UnsupportedOperationException e)
-		{
-			System.err.println(e);
+		} catch(UnsupportedOperationException e){
+			System.err.println("ParseMedataFlac UnsupportedOperationException"+e);
+			setExecutionType("Exception");
 		}
 	}
 	
-	void parseMetadataMp3(String pathToAudioFile, String parameters)
-	{
+	void parseMetadataMp3(String pathToAudioFile, String parameters){
 		try{
 			Parser parser=null;
 			InputStream input=null;
-				if(Pattern.matches("(.)+.mp3", parameters))
-				{	
-					parser = new Mp3Parser();	
-					input=new FileInputStream(new File(pathToAudioFile));
-				}
-				
-				
-				ContentHandler handler = new DefaultHandler();
-				Metadata metadata = new Metadata();
-				
-				ParseContext parseCtx= new ParseContext();
-				parser.parse(input,handler,metadata,parseCtx);
-				
-				
-				this.setTitle(metadata.get("title"));
-				this.setAlbum(metadata.get("xmpDM:album"));
-				this.setArtist(metadata.get("xmpDM:artist"));
-				this.setComposer(metadata.get("xmpDM:composer"));
-				this.setGenre(metadata.get("xmpDM:genre"));
-				this.setPath(pathToAudioFile);
+			if(Pattern.matches("(.)+.mp3", parameters)){	
+				parser = new Mp3Parser();	
+				input=new FileInputStream(new File(pathToAudioFile));
+			}
+			ContentHandler handler = new DefaultHandler();
+			Metadata metadata = new Metadata();
+
+			ParseContext parseCtx= new ParseContext();
+			parser.parse(input,handler,metadata,parseCtx);
+
+			this.setTitle(metadata.get("title"));
+			this.setAlbum(metadata.get("xmpDM:album"));
+			this.setArtist(metadata.get("xmpDM:artist"));
+			this.setComposer(metadata.get("xmpDM:composer"));
+			this.setGenre(metadata.get("xmpDM:genre"));
+			this.setPath(pathToAudioFile);
+			setExecutionType("ok");
 		}
 		catch(FileNotFoundException e){
-			System.err.println(e);
-			//e.printStackTrace();
-			}catch (IOException e){
-				System.err.println(e);
-				e.printStackTrace();
-			}catch(SAXException e){
-				System.err.println(e);
-				//e.printStackTrace();
-			}catch(TikaException e){
-				System.err.println(e);
-				//e.printStackTrace();
-			}
+			System.err.println("ParseMedataMp3 FileNotFoundException"+e);
+			setExecutionType("Exception");
+		}catch (IOException e){
+			System.err.println("ParseMedataMp3 IOException"+e);
+			setExecutionType("Exception");
+		}catch(SAXException e){
+			System.err.println("ParseMedataMp3 SAXEException"+e);
+			setExecutionType("Exception");
+		}catch(TikaException e){
+			System.err.println("ParseMedataMp3 TikaException"+e);
+			setExecutionType("Exception");
+		}
 	}
+	
+	@Override
+	  public String toString() {
+	    return String.format("[Song: path='%s', \n\t title=%s,\n\t artist=%s,\n\t album=%s, \n\t composer=%s, \n\t genre=%s]", path, title, artist,album,composer,genre);
+	  }
 
 	public String getArtist() {
 		return artist;
@@ -205,6 +205,12 @@ public class InfoCommand implements Command {
 
 	public void setAlbum(String album) {
 		this.album = album;
+	}
+	public String getExecutionType() {
+		return executionType;
+	}
+	public void setExecutionType(String executionType) {
+		this.executionType = executionType;
 	}
 
 }

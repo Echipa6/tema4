@@ -16,10 +16,12 @@ import Model.ListCommand;
 import Model.PlayCommand;
 import Model.ReportCommand;
 import Model.Song;
+import View.CommandView;
 
 public class CommandSolver {
 	
 	private static final String FILENAME = "FavoriteSongs.xml";
+	CommandView commandView= new CommandView();
 	
 	CommandSolver()
 	{
@@ -70,8 +72,8 @@ public class CommandSolver {
 		
 		if(currentCommand!=null){
 			currentCommand.execute(parameteres);
+			commandView.writeResult(currentCommand);
 			
-			System.out.println(CdCommand.getInstance().getCurrentPath());
 		}
 		else
 		{

@@ -16,27 +16,24 @@ public class ExitCommand implements Command {
 	      }
 	      return instance;
 	}
+	private ExitCommand()
+	{
+
+	}
 	
 	@Override
 	public void execute(String parametres) {
-		// TODO Auto-generated method stub
+		try{
+
+			XMLEncoder encoder = new XMLEncoder( new BufferedOutputStream( new FileOutputStream(FILENAME)));
+			encoder.writeObject(FavCommand.getInstance().favoriteSong);
+			encoder.close();
+			
+		}catch(FileNotFoundException e)
+		{
+			System.out.println("eceptioe");
+		}
 		System.exit(0);
 	}
-	private ExitCommand()
-	{
-		
-		try{
-			
-			XMLEncoder encoder =
-			           new XMLEncoder(
-			              new BufferedOutputStream(
-			                new FileOutputStream(FILENAME)));
-			        encoder.writeObject(FavCommand.getInstance().favoriteSong);
-			        encoder.close();
-			}catch(FileNotFoundException e)
-			{
-				System.out.println("eceptioe");
-			}
-		
-	}
+	
 }

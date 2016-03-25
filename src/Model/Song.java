@@ -31,7 +31,7 @@ public class Song  {
 		this.setGenre(infoSong.getGenre());
 		this.setAlbum(infoSong.getAlbum());
 	}
-	void afisare()
+	public void afisare()
 	{
 		System.out.println("Afisare din song");
 		System.out.println(this.path);
@@ -45,7 +45,7 @@ public class Song  {
 	
 	@Override
 	  public String toString() {
-	    return String.format("[Song: path='%s', title=%s, artist=%s, album=%s, composer=%s, genre=%s]", path, title, artist,album,composer,genre);
+	    return String.format("[Song: path='%s', \n\t title=%s,\n\t artist=%s,\n\t album=%s, \n\t composer=%s, \n\t genre=%s]", path, title, artist,album,composer,genre);
 	  }
 
 	public String getPath() {
