@@ -17,10 +17,19 @@ import Model.PlayCommand;
 import Model.ReportCommand;
 import Model.Song;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class CommandSolver.
+ * the central part of controller, this class will be create instances of commands, and will be run their execution. 
+ */
 public class CommandSolver {
 	
+	/** The Constant FILENAME. */
 	private static final String FILENAME = "FavoriteSongs.xml";
 	
+	/**
+	 * Instantiates a new command solver.
+	 */
 	CommandSolver()
 	{
 		try{
@@ -35,6 +44,12 @@ public class CommandSolver {
 		}
 	}
 	
+	/**
+	 * Gets the command.
+	 * this method will be return the implementation of interface command  given by param  
+	 * @param stringCommand the string command
+	 * @return the command
+	 */
 	public Command getCommand(String stringCommand)
 	{
 		
@@ -52,6 +67,12 @@ public class CommandSolver {
 		}
 	}
 	
+	/**
+	 * Execute command.
+	 * here will be run execution of command string is command and they param;
+	 * and also here is established the communication with user by view.
+	 * @param stringCommand the string command
+	 */
 	public void executeCommand(String stringCommand)
 	{
 		String[] result = stringCommand.split(" ", 2);

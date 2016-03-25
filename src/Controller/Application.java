@@ -2,6 +2,10 @@ package Controller;
 
 import java.util.Scanner;
 
+/**
+ * The Class Application.
+ * there will be the main of our application
+ */
 public class Application {
 
 	public static void main(String[] args) {
