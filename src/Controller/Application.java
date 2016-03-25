@@ -2,6 +2,7 @@ package Controller;
 
 import java.util.Scanner;
 
+import OurExceptions.NullCommandException;
 import View.CommandView;
 
 /**
@@ -29,9 +30,9 @@ public class Application {
 				
 				//System.out.println(comamnderManager.getActualPath());
 			}
-			catch(NullPointerException e)
+			catch(NullCommandException e)
 			{
-				System.out.println("Command is empty. Exception");
+				System.out.println("Command is empty."+e.getMessage());
 			}
 			
 		}

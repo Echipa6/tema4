@@ -16,6 +16,7 @@ import Model.ListCommand;
 import Model.PlayCommand;
 import Model.ReportCommand;
 import Model.Song;
+import OurExceptions.NullCommandException;
 import View.CommandView;
 
 // TODO: Auto-generated Javadoc
@@ -32,7 +33,7 @@ public class CommandSolver {
 	/**
 	 * Instantiates a new command solver.
 	 */
-	CommandSolver()
+	public CommandSolver()
 	{
 		try{
 			XMLDecoder decoder =
@@ -75,7 +76,7 @@ public class CommandSolver {
 	 * and also here is established the communication with user by view.
 	 * @param stringCommand the string command
 	 */
-	public void executeCommand(String stringCommand)
+	public void executeCommand(String stringCommand)throws  NullCommandException
 	{
 		String[] result = stringCommand.split(" ", 2);
 		
@@ -89,20 +90,19 @@ public class CommandSolver {
 	    parameteres=result[1];
 		
 		
-		Command currentCommand= getCommand(command);
+	   
+	    Command currentCommand= getCommand(command);
 		
-		if(currentCommand!=null){
+		if(currentCommand==null){
+			throw new NullCommandException();
+		}
+			
 			currentCommand.execute(parameteres);
 			commandView.writeResult(currentCommand);
 			
-		}
-		else
-		{
-			//exceptie
-			System.out.println("Unknown command");
-		}
+		
 		
 		
 	}
-	
-}
+}	
+
