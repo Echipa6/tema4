@@ -35,11 +35,7 @@ public class ReportCommand implements Command {
 	
 	@Override
 	public void execute(String parametres) {
-		// TODO Auto-generated method stub
-		System.out.println("Command report execute...");
 		
-
-
 		if (parametres.equals("html"))
 		{
 			System.out.println("incep sa fac raportul html");
@@ -52,7 +48,6 @@ public class ReportCommand implements Command {
 				songsName.add(new String(song.getPath()));
 			}
 			
-
 			Configuration cfg = new Configuration();
 			cfg.setClassForTemplateLoading(ReportCommand.class, "templates"); // setez diferite setari de configurare
 			cfg.setDefaultEncoding("UTF-8");

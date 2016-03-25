@@ -11,12 +11,6 @@ public class FavCommand implements Command{
 	
 	public List<Song> favoriteSong;
 	
-	public List<Song> getFavoriteSong() {
-		return favoriteSong;
-	}
-	public void setFavoriteSong(List<Song> favoriteSong) {
-		this.favoriteSong = favoriteSong;
-	}
 	public static FavCommand getInstance(){
 		if(instance == null) {
 	         instance = new FavCommand();

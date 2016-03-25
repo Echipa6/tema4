@@ -26,9 +26,8 @@ public class CommandSolver {
 	CommandSolver()
 	{
 		try{
-			XMLDecoder decoder =
-					new XMLDecoder(new BufferedInputStream(
-							new FileInputStream(FILENAME)));
+			XMLDecoder decoder =new XMLDecoder(new BufferedInputStream(new FileInputStream(FILENAME)));
+			
 				FavCommand.getInstance().favoriteSong = (List<Song>)decoder.readObject();
 				decoder.close();
 		}catch(FileNotFoundException e)
