@@ -48,7 +48,7 @@ public class CdCommand implements Command {
 	@Override
 	public void execute(String parameters) {
 		
-		if(parameters==null)
+		if(parameters=="" || parameters==null)
 		{
 			this.setExecutionType("ok");
 			getCurrentPath();

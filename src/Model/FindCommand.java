@@ -20,7 +20,7 @@ public class FindCommand implements Command {
 	private String executionType="ok";
 	
 	/** The found audio files. */
-	private List<String> foundAudioFiles;
+	private List<Song> foundAudioFiles;
 	
 	/**
 	 * Gets the single instance of FindCommand.
@@ -33,10 +33,7 @@ public class FindCommand implements Command {
 	      }
 	      return instance;
 	}
-	private FindCommand()
-	{
-		
-	}
+	
 	
 	/* (non-Javadoc)
 	 * 
@@ -68,12 +65,15 @@ public class FindCommand implements Command {
 			executionType="Exception";
 		}
 	}
-	
+	/*
 	 * Gets the found audio files.
 	 *
 	 * @return the found audio files
 	 */
 	public List<Song> getFoundAudioFiles() {
+		
+		return this.foundAudioFiles;
+	}
 	
 	
 	
@@ -86,6 +86,8 @@ public class FindCommand implements Command {
 	 */
 	private FindCommand()
 	{
+		
+	}
 		
 	public void setExecutionType(String executionType) {
 		this.executionType = executionType;

@@ -27,11 +27,6 @@ public class PlayCommand implements Command {
 	      }
 	      return instance;
 	}
-	private PlayCommand()
-	{
-		
-	}
-	
 	/* (non-Javadoc)
 	 * this method establishes connection between our application and an audio player installed on desktop by opening audio file
 	 * and you can play only by giving relative path to the current directory
@@ -70,7 +65,7 @@ public class PlayCommand implements Command {
 	 */
 	private PlayCommand()
 	{
-		
+	}	
 	public String getExecutionType() {
 		return executionType;
 	}

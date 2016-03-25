@@ -87,9 +87,7 @@ public class CommandSolver {
 	    	command=result[0];
 	    if(result.length==2)
 	    parameteres=result[1];
-		
-		
-	   
+ 
 	    Command currentCommand= getCommand(command);
 		
 		if(currentCommand==null){
@@ -98,9 +96,6 @@ public class CommandSolver {
 			
 			currentCommand.execute(parameteres);
 			commandView.writeResult(currentCommand);
-			
-		
-		
 		
 	}
 }	

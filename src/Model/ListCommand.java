@@ -30,10 +30,7 @@ public class ListCommand implements Command {
 	      }
 	      return instance;
 	}
-	private ListCommand()
-	{
-		
-	}
+
 	
 	/* (non-Javadoc)
 	 * 
@@ -73,6 +70,7 @@ public class ListCommand implements Command {
 	private ListCommand()
 	{
 		
+	}	
 	public String getExecutionType() {
 		return executionType;
 	}

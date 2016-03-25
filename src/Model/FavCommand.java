@@ -67,7 +67,6 @@ public class FavCommand implements Command{
 	 */
 	@Override
 	public void execute(String parameters) {
-		System.out.println("Command fav execute...");
 		
 		InfoCommand.getInstance().execute(parameters);
 		
