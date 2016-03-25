@@ -2,8 +2,13 @@ package Controller;
 
 import java.util.Scanner;
 
+import OurExceptions.NullCommandException;
 import View.CommandView;
 
+/**
+ * The Class Application.
+ * there will be the main of our application
+ */
 public class Application {
 
 	public static void main(String[] args) {
@@ -22,9 +27,9 @@ public class Application {
 				comamnderManager.executeCommand(currentCommand);
 
 			}
-			catch(NullPointerException e)
+			catch(NullCommandException e)
 			{
-				System.out.println("Command is empty. Exception");
+				System.out.println("Command is empty."+e.getMessage());
 			}
 			
 		}

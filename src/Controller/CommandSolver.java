@@ -16,14 +16,24 @@ import Model.ListCommand;
 import Model.PlayCommand;
 import Model.ReportCommand;
 import Model.Song;
+import OurExceptions.NullCommandException;
 import View.CommandView;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class CommandSolver.
+ * the central part of controller, this class will be create instances of commands, and will be run their execution. 
+ */
 public class CommandSolver {
 	
+	/** The Constant FILENAME. */
 	private static final String FILENAME = "FavoriteSongs.xml";
 	CommandView commandView= new CommandView();
 	
-	CommandSolver()
+	/**
+	 * Instantiates a new command solver.
+	 */
+	public CommandSolver()
 	{
 		try{
 			XMLDecoder decoder =new XMLDecoder(new BufferedInputStream(new FileInputStream(FILENAME)));
@@ -36,6 +46,12 @@ public class CommandSolver {
 		}
 	}
 	
+	/**
+	 * Gets the command.
+	 * this method will be return the implementation of interface command  given by param  
+	 * @param stringCommand the string command
+	 * @return the command
+	 */
 	public Command getCommand(String stringCommand)
 	{
 		
@@ -53,7 +69,13 @@ public class CommandSolver {
 		}
 	}
 	
-	public void executeCommand(String stringCommand)
+	/**
+	 * Execute command.
+	 * here will be run execution of command string is command and they param;
+	 * and also here is established the communication with user by view.
+	 * @param stringCommand the string command
+	 */
+	public void executeCommand(String stringCommand)throws  NullCommandException
 	{
 		String[] result = stringCommand.split(" ", 2);
 		
@@ -67,20 +89,19 @@ public class CommandSolver {
 	    parameteres=result[1];
 		
 		
-		Command currentCommand= getCommand(command);
+	   
+	    Command currentCommand= getCommand(command);
 		
-		if(currentCommand!=null){
+		if(currentCommand==null){
+			throw new NullCommandException();
+		}
+			
 			currentCommand.execute(parameteres);
 			commandView.writeResult(currentCommand);
 			
-		}
-		else
-		{
-			//exceptie
-			System.out.println("Unknown command");
-		}
+		
 		
 		
 	}
-	
-}
+}	
+

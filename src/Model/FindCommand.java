@@ -8,13 +8,25 @@ import java.util.List;
 import org.apache.commons.io.FileUtils;
 
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class FindCommand.
+ * 
+ */
 public class FindCommand implements Command {
 
+	/** The instance. */
 	private static FindCommand instance= null;
 	private String executionType="ok";
 	
-	private List<Song> foundAudioFiles;
+	/** The found audio files. */
+	private List<String> foundAudioFiles;
 	
+	/**
+	 * Gets the single instance of FindCommand.
+	 *
+	 * @return single instance of FindCommand
+	 */
 	public static FindCommand getInstance(){
 		if(instance == null) {
 	         instance = new FindCommand();
@@ -26,6 +38,11 @@ public class FindCommand implements Command {
 		
 	}
 	
+	/* (non-Javadoc)
+	 * 
+	 * in this method the specified by parameter artist will be searched in metadata of songs from this folder and so on recursive;
+	 * @see Model.Command#execute(java.lang.String)
+	 */
 	@Override
 	public void execute(String parametres) {
 		
@@ -52,14 +69,24 @@ public class FindCommand implements Command {
 		}
 	}
 	
+	 * Gets the found audio files.
+	 *
+	 * @return the found audio files
+	 */
 	public List<Song> getFoundAudioFiles() {
-		return foundAudioFiles;
-	}
+	
+	
 	
 	public String getExecutionType() {
 		return executionType;
 	}
 
+	/**
+	 * Instantiates a new find command.
+	 */
+	private FindCommand()
+	{
+		
 	public void setExecutionType(String executionType) {
 		this.executionType = executionType;
 	}

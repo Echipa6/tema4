@@ -26,30 +26,61 @@ import org.xml.sax.helpers.DefaultHandler;
 
 
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class InfoCommand.
+ */
 public class InfoCommand implements Command {
 	
+	/** The instance. */
 	private static InfoCommand instance= null;
 	
+	/** The execution type. */
 	private String executionType="ok";
 	
+	/** The path. */
 	private String path;
+	
+	/** The title. */
 	private String title;
+	
+	/** The artist. */
 	private String artist;
+	
+	/** The composer. */
 	private String composer;
+	
+	/** The genre. */
 	private String genre;
+	
+	/** The album. */
 	private String album;
 	
+	/**
+	 * Gets the single instance of InfoCommand.
+	 *
+	 * @return single instance of InfoCommand
+	 */
 	public static InfoCommand getInstance(){
 		if(instance == null) {
 	         instance = new InfoCommand();
 	      }
 	      return instance;
 	} 
+	
+	/**
+	 * Instantiates a new info command.
+	 */
 	private InfoCommand()
 	{
 		
 	}
 	
+	/* (non-Javadoc)
+	 * 
+	 * this method extracts metadata from audio file, specifed by parameter, as absolute path to this and also by relative path from current folder
+	 * @see Model.Command#execute(java.lang.String)
+	 */
 	@Override
 	public void execute(String parameters) 
 	{
@@ -77,6 +108,11 @@ public class InfoCommand implements Command {
 			setExecutionType("fail");
 	}
 	
+	/**
+	 * Parses the metadata flac.
+	 *
+	 * @param pathToAudioFile the path to audio file
+	 */
 	void parseMetadataFlac(String pathToAudioFile)
 	{
 		AudioFile f = null;
@@ -117,6 +153,12 @@ public class InfoCommand implements Command {
 		}
 	}
 	
+	/**
+	 * Parses the metadata mp3.
+	 *
+	 * @param pathToAudioFile the path to audio file
+	 * @param parameters the parameters
+	 */
 	void parseMetadataMp3(String pathToAudioFile, String parameters){
 		try{
 			Parser parser=null;
@@ -154,61 +196,136 @@ public class InfoCommand implements Command {
 		}
 	}
 	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
 	@Override
 	  public String toString() {
 	    return String.format("[Song: path='%s', \n\t title=%s,\n\t artist=%s,\n\t album=%s, \n\t composer=%s, \n\t genre=%s]", path, title, artist,album,composer,genre);
 	  }
 
+	/**
+	 * Gets the artist.
+	 *
+	 * @return the artist
+	 */
 	public String getArtist() {
 		return artist;
 	}
 
+	/**
+	 * Sets the artist.
+	 *
+	 * @param artist the new artist
+	 */
 	public void setArtist(String artist) {
 		this.artist = artist;
 	}
 
+	/**
+	 * Gets the path.
+	 *
+	 * @return the path
+	 */
 	public String getPath() {
 		return path;
 	}
 
+	/**
+	 * Sets the path.
+	 *
+	 * @param path the new path
+	 */
 	public void setPath(String path) {
 		this.path = path;
 	}
 
+	/**
+	 * Gets the title.
+	 *
+	 * @return the title
+	 */
 	public String getTitle() {
 		return title;
 	}
 
+	/**
+	 * Sets the title.
+	 *
+	 * @param title the new title
+	 */
 	public void setTitle(String title) {
 		this.title = title;
 	}
 
+	/**
+	 * Gets the composer.
+	 *
+	 * @return the composer
+	 */
 	public String getComposer() {
 		return composer;
 	}
 
+	/**
+	 * Sets the composer.
+	 *
+	 * @param composer the new composer
+	 */
 	public void setComposer(String composer) {
 		this.composer = composer;
 	}
 
+	/**
+	 * Gets the genre.
+	 *
+	 * @return the genre
+	 */
 	public String getGenre() {
 		return genre;
 	}
 
+	/**
+	 * Sets the genre.
+	 *
+	 * @param genre the new genre
+	 */
 	public void setGenre(String genre) {
 		this.genre = genre;
 	}
 
+	/**
+	 * Gets the album.
+	 *
+	 * @return the album
+	 */
 	public String getAlbum() {
 		return album;
 	}
 
+	/**
+	 * Sets the album.
+	 *
+	 * @param album the new album
+	 */
 	public void setAlbum(String album) {
 		this.album = album;
 	}
+	
+	/**
+	 * Gets the execution type.
+	 *
+	 * @return the execution type
+	 */
 	public String getExecutionType() {
 		return executionType;
 	}
+	
+	/**
+	 * Sets the execution type.
+	 *
+	 * @param executionType the new execution type
+	 */
 	public void setExecutionType(String executionType) {
 		this.executionType = executionType;
 	}
