@@ -80,5 +80,24 @@
     </void>
    </object>
   </void>
+  <void method="add">
+   <object class="Model.Song">
+    <void property="album">
+     <string>Seventeen Days</string>
+    </void>
+    <void property="artist">
+     <string>3 Doors Down</string>
+    </void>
+    <void property="genre">
+     <string>Alternative</string>
+    </void>
+    <void property="path">
+     <string>E:\muzica\Alternative\3 Doors Down - Landing In London.mp3</string>
+    </void>
+    <void property="title">
+     <string>Landing In London</string>
+    </void>
+   </object>
+  </void>
  </object>
 </java>

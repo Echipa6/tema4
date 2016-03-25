@@ -29,6 +29,16 @@ public class FavCommand implements Command{
 	}
 	
 		
+	public List<Song> getFavoriteSong() {
+		return favoriteSong;
+	}
+
+
+	public void setFavoriteSong(List<Song> favoriteSong) {
+		this.favoriteSong = favoriteSong;
+	}
+
+
 	@Override
 	public void execute(String parameters) {
 		System.out.println("Command fav execute...");
