@@ -16,6 +16,7 @@ import Model.ListCommand;
 import Model.PlayCommand;
 import Model.ReportCommand;
 import Model.Song;
+import View.CommandView;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -26,6 +27,7 @@ public class CommandSolver {
 	
 	/** The Constant FILENAME. */
 	private static final String FILENAME = "FavoriteSongs.xml";
+	CommandView commandView= new CommandView();
 	
 	/**
 	 * Instantiates a new command solver.
@@ -91,8 +93,8 @@ public class CommandSolver {
 		
 		if(currentCommand!=null){
 			currentCommand.execute(parameteres);
+			commandView.writeResult(currentCommand);
 			
-			System.out.println(CdCommand.getInstance().getCurrentPath());
 		}
 		else
 		{

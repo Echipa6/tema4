@@ -2,6 +2,8 @@ package Controller;
 
 import java.util.Scanner;
 
+import View.CommandView;
+
 /**
  * The Class Application.
  * there will be the main of our application
@@ -20,19 +22,17 @@ public class Application {
 		{
 			
 			currentCommand = keyboard.nextLine();
-			//System.out.println(currentCommand);
 			
-			comamnderManager.executeCommand(currentCommand);
-			
-//			try{
-//				
-//				
-//				//System.out.println(comamnderManager.getActualPath());
-//			}
-//			catch(NullPointerException e)
-//			{
-//				System.out.println("Command is empty. Exception");
-//			}
+			try{
+				
+				comamnderManager.executeCommand(currentCommand);
+				
+				//System.out.println(comamnderManager.getActualPath());
+			}
+			catch(NullPointerException e)
+			{
+				System.out.println("Command is empty. Exception");
+			}
 			
 		}
 		
