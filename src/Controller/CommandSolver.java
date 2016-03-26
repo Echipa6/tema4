@@ -36,9 +36,8 @@ public class CommandSolver {
 	public CommandSolver()
 	{
 		try{
-			XMLDecoder decoder =
-					new XMLDecoder(new BufferedInputStream(
-							new FileInputStream(FILENAME)));
+			XMLDecoder decoder =new XMLDecoder(new BufferedInputStream(new FileInputStream(FILENAME)));
+			
 				FavCommand.getInstance().favoriteSong = (List<Song>)decoder.readObject();
 				decoder.close();
 		}catch(FileNotFoundException e)
@@ -88,9 +87,7 @@ public class CommandSolver {
 	    	command=result[0];
 	    if(result.length==2)
 	    parameteres=result[1];
-		
-		
-	   
+ 
 	    Command currentCommand= getCommand(command);
 		
 		if(currentCommand==null){
@@ -99,9 +96,6 @@ public class CommandSolver {
 			
 			currentCommand.execute(parameteres);
 			commandView.writeResult(currentCommand);
-			
-		
-		
 		
 	}
 }	

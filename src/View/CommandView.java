@@ -61,7 +61,18 @@ public class CommandView {
 	 */
 	public void writeResult(FindCommand command)
 	{
-		
+		switch(command.getExecutionType())
+		{
+		case "ok":
+			for(Song song: command.getFoundAudioFiles())
+			{
+				System.out.println(song.toString());
+			}
+			break;
+		case "Exception": System.out.println("Exception FindComand!");
+			break;
+		default: System.out.println("Anormal execution of Find");
+		}
 	}
 	
 	/**
@@ -92,6 +103,18 @@ public class CommandView {
 	 */
 	public void writeResult(ListCommand command)
 	{
+		switch(command.getExecutionType())
+		{
+		case "ok":
+			for(Song song: command.getFoundAudioFiles())
+			{
+				System.out.println(song.toString());
+			}
+			break;
+		case "Exception": System.out.println("Exception ListComand!");
+			break;
+		default: System.out.println("Anormal execution of List");
+		}
 		
 	}
 	
@@ -102,6 +125,13 @@ public class CommandView {
 	 */
 	public void writeResult(PlayCommand command)
 	{
+		switch(command.getExecutionType()){
+		case "ok": System.out.println("File is opening");
+			break;
+		case "fail": System.out.println("File doesn't exist or format doesn't match");
+			break;
+		default : System.out.println("Unexpected result on InfoCommand");
+		}
 		
 	}
 	

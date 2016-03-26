@@ -6,6 +6,7 @@ import java.nio.file.DirectoryStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
 import java.util.regex.Pattern;
 
 // TODO: Auto-generated Javadoc
@@ -16,7 +17,8 @@ public class ListCommand implements Command {
 	
 	/** The instance. */
 	private static ListCommand instance= null;
-	
+	private String executionType="ok";
+	private List<Song> foundAudioFiles;
 	/**
 	 * Gets the single instance of ListCommand.
 	 *
@@ -28,6 +30,7 @@ public class ListCommand implements Command {
 	      }
 	      return instance;
 	}
+
 	
 	/* (non-Javadoc)
 	 * 
@@ -36,30 +39,28 @@ public class ListCommand implements Command {
 	 */
 	@Override
 	public void execute(String parameters) {
-		System.out.println("Command list execute...");
 		Path dir;
 		if(parameters!=null)
-		{
 			 dir=Paths.get(parameters);
-		}
 		else
-		{
 			dir =Paths.get(CdCommand.getInstance().getCurrentPath());
-		}
+		
 		try (DirectoryStream<Path> stream = Files.newDirectoryStream(dir)) {
 			
 			for (Path file: stream) {
-				//System.out.println(file.getFileName());
-				if( Pattern.matches("(.)+.wav",file.getFileName().toString()) || Pattern.matches("(.)+.mp3", file.getFileName().toString()) || Pattern.matches("(.)+.flac",file.getFileName().toString()) ){
-						 System.out.println(file.getFileName());
+				if( Pattern.matches("(.)+\\.wav",file.getFileName().toString()) || Pattern.matches("(.)+\\.mp3", file.getFileName().toString()) || Pattern.matches("(.)+\\.flac",file.getFileName().toString()) ){	 
+					InfoCommand.getInstance().execute(file.toString());
+					if(InfoCommand.getInstance().getExecutionType().equals("ok")){
+						foundAudioFiles.add(new Song(InfoCommand.getInstance()));
+						executionType="ok";
+					}
 				}
 			}
 			
 		   
 		} catch (IOException | DirectoryIteratorException x) {
-		    // IOException can never be thrown by the iteration.
-		    // In this snippet, it can only be thrown by newDirectoryStream.
-		    System.err.println(x);
+			executionType="Exception";
+		    System.err.println("ListCommand IOException"+ x);
 		}
 	}
 	
@@ -69,6 +70,17 @@ public class ListCommand implements Command {
 	private ListCommand()
 	{
 		
+	}	
+	public String getExecutionType() {
+		return executionType;
 	}
-
+	public void setExecutionType(String executionType) {
+		this.executionType = executionType;
+	}
+	public List<Song> getFoundAudioFiles() {
+		return foundAudioFiles;
+	}
+	public void setFoundAudioFiles(List<Song> foundAudioFiles) {
+		this.foundAudioFiles = foundAudioFiles;
+	}
 }

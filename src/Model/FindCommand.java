@@ -17,9 +17,10 @@ public class FindCommand implements Command {
 
 	/** The instance. */
 	private static FindCommand instance= null;
+	private String executionType="ok";
 	
 	/** The found audio files. */
-	private List<String> foundAudioFiles;
+	private List<Song> foundAudioFiles;
 	
 	/**
 	 * Gets the single instance of FindCommand.
@@ -33,6 +34,7 @@ public class FindCommand implements Command {
 	      return instance;
 	}
 	
+	
 	/* (non-Javadoc)
 	 * 
 	 * in this method the specified by parameter artist will be searched in metadata of songs from this folder and so on recursive;
@@ -41,38 +43,43 @@ public class FindCommand implements Command {
 	@Override
 	public void execute(String parametres) {
 		
-		System.out.println("Command find execute...");
-		foundAudioFiles=new ArrayList<String>();
-		InfoCommand info= InfoCommand.getInstance();
+		foundAudioFiles=new ArrayList<Song>();
+		InfoCommand infoMetadate= InfoCommand.getInstance();
 				
-		List<File> files =
-                (List<File>) FileUtils.listFiles(FileUtils.getFile(CdCommand.getInstance().getCurrentPath().toString()), new String[] {"mp3","flac","wav"},true);
-		for(File file:files){
-			info.execute(file.toString());
-			//System.out.println(file.toString());
-    		if(parametres.equals(InfoCommand.getInstance().getArtist()) )
-    		{
-    			try{
-    				foundAudioFiles.add(file.getAbsolutePath());
-    				System.out.println(file);
-    			}catch(NullPointerException e)
-    			{
-    				
-    			}
-    		}
-    	}
+		List<File> files =(List<File>) FileUtils.listFiles(
+				FileUtils.getFile(CdCommand.getInstance().getCurrentPath()), 
+				new String[] {"mp3","flac","wav"}, 
+				true);
+		
+		try{
+			for(File file:files){
+				infoMetadate.execute(file.toString());
+				if(parametres.equals(infoMetadate.getArtist()) )
+				{
+					foundAudioFiles.add(new Song(infoMetadate));
+				}
+			}
+		}catch(NullPointerException e)
+		{
+			System.out.println("Execute FindComand NullPointerException "+e);
+			executionType="Exception";
+		}
 	}
-	
-	/**
+	/*
 	 * Gets the found audio files.
 	 *
 	 * @return the found audio files
 	 */
-	public List<String> getFoundAudioFiles() {
-		return foundAudioFiles;
+	public List<Song> getFoundAudioFiles() {
+		
+		return this.foundAudioFiles;
 	}
-
 	
+	
+	
+	public String getExecutionType() {
+		return executionType;
+	}
 
 	/**
 	 * Instantiates a new find command.
@@ -81,7 +88,8 @@ public class FindCommand implements Command {
 	{
 		
 	}
-	
-	
-
+		
+	public void setExecutionType(String executionType) {
+		this.executionType = executionType;
+	}
 }

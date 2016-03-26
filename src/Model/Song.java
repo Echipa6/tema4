@@ -75,7 +75,7 @@ public class Song  {
 	 */
 	@Override
 	  public String toString() {
-	    return String.format("[Song: path='%s', \n\t title=%s,\n\t artist=%s,\n\t album=%s, \n\t composer=%s, \n\t genre=%s]", path, title, artist,album,composer,genre);
+	    return String.format("[Song: path='%s', \n\t title=%s,\n\t artist=%s,\n\t album=%s, \n\t composer=%s, \n\t genre=%s]\n\n", path, title, artist,album,composer,genre);
 	  }
 
 	/**

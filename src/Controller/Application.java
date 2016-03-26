@@ -17,8 +17,6 @@ public class Application {
 		
 		CommandSolver comamnderManager= new CommandSolver();
 		
-		//comentariu genereaza conflict
-		// altceva
 		while(true)
 		{
 			
@@ -27,8 +25,7 @@ public class Application {
 			try{
 				
 				comamnderManager.executeCommand(currentCommand);
-				
-				//System.out.println(comamnderManager.getActualPath());
+
 			}
 			catch(NullCommandException e)
 			{
