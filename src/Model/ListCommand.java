@@ -6,6 +6,7 @@ import java.nio.file.DirectoryStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
 
@@ -69,7 +70,7 @@ public class ListCommand implements Command {
 	 */
 	private ListCommand()
 	{
-		
+		foundAudioFiles=new ArrayList<Song>();
 	}	
 	public String getExecutionType() {
 		return executionType;

@@ -74,6 +74,7 @@ public class InfoCommand implements Command {
 	private InfoCommand()
 	{
 		
+		
 	}
 	
 	/* (non-Javadoc)
