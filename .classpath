@@ -6,7 +6,7 @@
 	<classpathentry kind="lib" path="jaudiotagger-2.2.4-SNAPSHOT.jar"/>
 	<classpathentry kind="lib" path="lib/apache-tika-1.12.jar.jar"/>
 	<classpathentry kind="lib" path="lib/freemarker.jar"/>
-	<classpathentry kind="lib" path="lib/itextpdf-5.3.5.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/itextpdf-5.3.5.jar"/>
 	<classpathentry kind="lib" path="lib/jaudiotagger-2.2.4-SNAPSHOT.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="output" path="bin"/>
